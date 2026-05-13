@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAN'SHE恭喜 | 医学抗衰 · 年轻恭喜</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #FAF8F5;
+            --color-bg-warm: #F5F0EB;
+            --color-text: #2C2C2C;
+            --color-text-light: #6B6B6B;
+            --color-gold: #C9A96E;
+            --color-gold-light: #D4B87A;
+            --color-rose: #B76E79;
+            --color-rose-light: #D4A5AC;
+            --color-dark: #1A1A1A;
+            --font-serif: 'Noto Serif SC', 'Songti SC', serif;
+            --font-sans: 'Noto Sans SC', -apple-system, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* ===== Navigation ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 40px;
+            transition: all 0.4s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(250, 248, 245, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            padding: 15px 40px;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--color-dark);
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: var(--color-gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--color-text);
+            font-size: 0.9rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--color-gold);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-gold);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* ===== Hero Section ===== */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(201, 169, 110, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 50%, rgba(183, 110, 121, 0.06) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        .hero-subtitle {
+            font-family: var(--font-serif);
+            font-size: 0.9rem;
+            letter-spacing: 6px;
+            color: var(--color-gold);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .hero-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 300;
+            color: var(--color-dark);
+            margin-bottom: 20px;
+            letter-spacing: 4px;
+        }
+
+        .hero-title .highlight {
+            font-weight: 600;
+            color: var(--color-rose);
+        }
+
+        .hero-slogan {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            color: var(--color-text-light);
+            font-weight: 300;
+            letter-spacing: 8px;
+            margin-bottom: 40px;
+        }
+
+        .hero-divider {
+            width: 60px;
+            height: 1px;
+            background: var(--color-gold);
+            margin: 0 auto 40px;
+        }
+
+        .hero-desc {
+            max-width: 600px;
+            margin: 0 auto;
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+            line-height: 2;
+            font-weight: 300;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator span {
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            color: var(--color-text-light);
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--color-gold), transparent);
+        }
+
+        /* ===== Section Common ===== */
+        section {
+            padding: 120px 40px;
+            position: relative;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-label {
+            font-family: var(--font-serif);
+            font-size: 0.8rem;
+            letter-spacing: 4px;
+            color: var(--color-gold);
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 400;
+            color: var(--color-dark);
+            margin-bottom: 20px;
+        }
+
+        .section-divider {
+            width: 40px;
+            height: 1px;
+            background: var(--color-gold);
+            margin: 0 auto;
+        }
+
+        /* ===== About Section ===== */
+        .about {
+            background: var(--color-bg-warm);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            aspect-ratio: 3/4;
+            background: linear-gradient(135deg, #E8E0D8 0%, #D4C8BC 100%);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .about-image::before {
+            content: '品牌空间';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: var(--font-serif);
+            color: rgba(255,255,255,0.5);
+            font-size: 1.5rem;
+            letter-spacing: 8px;
+        }
+
+        .about-content h3 {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 30px;
+            color: var(--color-dark);
+        }
+
+        .about-content p {
+            color: var(--color-text-light);
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .about-quote {
+            margin-top: 40px;
+            padding: 30px;
+            border-left: 2px solid var(--color-gold);
+            background: rgba(201, 169, 110, 0.05);
+        }
+
+        .about-quote p {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            color: var(--color-dark);
+            font-style: italic;
+            margin: 0;
+        }
+
+        .about-quote .author {
+            margin-top: 15px;
+            font-size: 0.85rem;
+            color: var(--color-gold);
+            font-style: normal;
+        }
+
+        /* ===== Founder Section ===== */
+        .founder {
+            background: var(--color-dark);
+            color: #fff;
+        }
+
+        .founder .section-label,
+        .founder .section-title {
+            color: var(--color-gold-light);
+        }
+
+        .founder .section-divider {
+            background: var(--color-rose-light);
+        }
+
+        .founder-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .founder-content h3 {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .founder-role {
+            color: var(--color-gold);
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+            margin-bottom: 30px;
+        }
+
+        .founder-content p {
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 20px;
+            font-weight: 300;
+            line-height: 2;
+        }
+
+        .founder-timeline {
+            margin-top: 40px;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .timeline-date {
+            font-family: var(--font-serif);
+            color: var(--color-gold);
+            font-size: 0.85rem;
+            min-width: 140px;
+            letter-spacing: 1px;
+        }
+
+        .timeline-text {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9rem;
+        }
+
+        .founder-image {
+            aspect-ratio: 3/4;
+            background: linear-gradient(135deg, #2A2A2A 0%, #1A1A1A 100%);
+            border-radius: 2px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .founder-image::before {
+            content: '主理人肖像';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: var(--font-serif);
+            color: rgba(255,255,255,0.2);
+            font-size: 1.5rem;
+            letter-spacing: 8px;
+        }
+
+        /* ===== Timeline Section ===== */
+        .timeline-section {
+            background: var(--color-bg);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, var(--color-gold), transparent);
+        }
+
+        .timeline-item-main {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .timeline-item-main:nth-child(even) .timeline-content {
+            grid-column: 2;
+            text-align: left;
+        }
+
+        .timeline-item-main:nth-child(even) .timeline-year-wrap {
+            grid-column: 1;
+            text-align: right;
+        }
+
+        .timeline-year-wrap {
+            text-align: right;
+            position: relative;
+        }
+
+        .timeline-year {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            color: var(--color-gold);
+            font-weight: 600;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            top: 10px;
+            right: -66px;
+            width: 12px;
+            height: 12px;
+            background: var(--color-gold);
+            border-radius: 50%;
+            border: 3px solid var(--color-bg);
+            z-index: 2;
+        }
+
+        .timeline-item-main:nth-child(even) .timeline-dot {
+            right: auto;
+            left: -66px;
+        }
+
+        .timeline-content h4 {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            color: var(--color-dark);
+            margin-bottom: 10px;
+        }
+
+        .timeline-content p {
+            color: var(--color-text-light);
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+
+        /* ===== Culture Section ===== */
+        .culture {
+            background: var(--color-bg-warm);
+        }
+
+        .culture-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .culture-card {
+            background: #fff;
+            padding: 50px 40px;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(201, 169, 110, 0.1);
+        }
+
+        .culture-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            border-color: rgba(201, 169, 110, 0.3);
+        }
+
+        .culture-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 25px;
+            border: 1px solid var(--color-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            color: var(--color-gold);
+        }
+
+        .culture-card h3 {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--color-dark);
+        }
+
+        .culture-card p {
+            color: var(--color-text-light);
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+
+        .culture-values {
+            margin-top: 80px;
+            text-align: center;
+        }
+
+        .culture-values h3 {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            color: var(--color-dark);
+        }
+
+        .values-grid {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .value-item {
+            text-align: center;
+        }
+
+        .value-item h4 {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            color: var(--color-gold);
+            margin-bottom: 8px;
+        }
+
+        .value-item p {
+            color: var(--color-text-light);
+            font-size: 0.85rem;
+        }
+
+        /* ===== Strengths Section ===== */
+        .strengths {
+            background: var(--color-dark);
+            color: #fff;
+        }
+
+        .strengths .section-label {
+            color: var(--color-gold-light);
+        }
+
+        .strengths .section-title {
+            color: #fff;
+        }
+
+        .strengths-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            color: rgba(255,255,255,0.5);
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            cursor: pointer;
+            padding: 10px 0;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .tab-btn.active,
+        .tab-btn:hover {
+            color: var(--color-gold);
+        }
+
+        .tab-btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--color-gold);
+            transition: width 0.3s;
+        }
+
+        .tab-btn.active::after,
+        .tab-btn:hover::after {
+            width: 100%;
+        }
+
+        .strengths-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .strength-item {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 30px;
+            transition: all 0.3s;
+        }
+
+        .strength-item:hover {
+            background: rgba(255,255,255,0.06);
+            border-color: rgba(201, 169, 110, 0.3);
+        }
+
+        .strength-item h4 {
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            color: #fff;
+            margin-bottom: 8px;
+            font-weight: 400;
+        }
+
+        .strength-item p {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.85rem;
+        }
+
+        .strength-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(201, 169, 110, 0.15);
+            color: var(--color-gold);
+            font-size: 0.75rem;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        /* ===== Doctor Section ===== */
+        .doctor {
+            background: var(--color-bg);
+        }
+
+        .doctor-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .doctor-image {
+            aspect-ratio: 3/4;
+            background: linear-gradient(135deg, #E8E0D8 0%, #D4C8BC 100%);
+            border-radius: 2px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .doctor-image::before {
+            content: '医师形象';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: var(--font-serif);
+            color: rgba(255,255,255,0.5);
+            font-size: 1.5rem;
+            letter-spacing: 8px;
+        }
+
+        .doctor-content h3 {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 10px;
+        }
+
+        .doctor-role {
+            color: var(--color-gold);
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+            margin-bottom: 30px;
+        }
+
+        .doctor-content p {
+            color: var(--color-text-light);
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .doctor-certs {
+            margin-top: 30px;
+        }
+
+        .doctor-certs h4 {
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            margin-bottom: 15px;
+            color: var(--color-dark);
+        }
+
+        .cert-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .cert-tag {
+            padding: 6px 16px;
+            background: rgba(201, 169, 110, 0.1);
+            border: 1px solid rgba(201, 169, 110, 0.2);
+            color: var(--color-text);
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        /* ===== Contact / Footer ===== */
+        footer {
+            background: var(--color-dark);
+            color: #fff;
+            padding: 80px 40px 40px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand .logo {
+            color: #fff;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .footer-brand p {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .footer-links h4 {
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            margin-bottom: 20px;
+            color: var(--color-gold);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--color-gold);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 30px;
+            text-align: center;
+            color: rgba(255,255,255,0.4);
+            font-size: 0.8rem;
+        }
+
+        /* ===== Animations ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== Mobile Responsive ===== */
+        @media (max-width: 968px) {
+            .about-grid,
+            .founder-grid,
+            .doctor-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .culture-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item-main {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding-left: 50px;
+            }
+
+            .timeline-item-main:nth-child(even) .timeline-content,
+            .timeline-item-main:nth-child(even) .timeline-year-wrap {
+                grid-column: 1;
+                text-align: left;
+            }
+
+            .timeline-year-wrap {
+                text-align: left;
+            }
+
+            .timeline-dot {
+                left: -46px !important;
+                right: auto !important;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            section {
+                padding: 80px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">CAN'<span>SHE</span> 恭喜</div>
+            <ul class="nav-links">
+                <li><a href="#about">品牌故事</a></li>
+                <li><a href="#founder">主理人</a></li>
+                <li><a href="#timeline">发展历程</a></li>
+                <li><a href="#culture">品牌文化</a></li>
+                <li><a href="#strengths">品牌实力</a></li>
+                <li><a href="#doctor">医疗团队</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-subtitle">Medical Anti-aging</p>
+            <h1 class="hero-title">医学抗衰<br><span class="highlight">年轻恭喜</span></h1>
+            <p class="hero-slogan">唤新你的美</p>
+            <div class="hero-divider"></div>
+            <p class="hero-desc">
+                深耕医学抗衰十年，集医学美容、科技抗衰、美容护理于一体的综合美学空间。
+                科学唤肤，量肤定制，用专业守护您变美的每一步。
+            </p>
+        </div>
+        <div class="scroll-indicator">
+            <span>SCROLL</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <p class="section-label">Brand Story</p>
+                <h2 class="section-title">品牌故事</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="about-grid">
+                <div class="about-image fade-in"></div>
+                <div class="about-content fade-in">
+                    <h3>科学唤肤 · 量肤定制</h3>
+                    <p>CAN'SHE恭喜，成立于2015年，深耕医学抗衰十年。从最初引进国际高端护肤产品，到日本Pola学院深入研习非手术面部年轻化技术，我们始终走在美的前沿。</p>
+                    <p>2018年，恭喜日式美肌正式成立，秉着"大牌养肤不伤肤"理念，确立高端护理定位。2021年成立恭喜科美中心，引进商丘首台海菲秀、BTL等高端仪器。2024年取得医疗资质，实现从生活美容到医疗美容的完整闭环。</p>
+                    <p>如今，千平方的医学抗衰总店，是集医学美容、科技抗衰、美容护理于一体的综合美学空间。</p>
+                    <div class="about-quote">
+                        <p>"不必执着于统一的美之标准，适合自己的美容方案，才是最好的答案。"</p>
+                        <p class="author">—— 刘娜，品牌主理人</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Founder Section -->
+    <section class="founder" id="founder">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <p class="section-label">Founder</p>
+                <h2 class="section-title">主理人介绍</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="founder-grid">
+                <div class="founder-content fade-in">
+                    <h3>刘 娜</h3>
+                    <p class="founder-role">CAN'SHE恭喜 品牌主理人</p>
+                    <p>做一个靠谱的人，做一个靠谱的品牌。这是我的人生格言，也是恭喜品牌的基石。</p>
+                    <p>从2015年赴日本Pola高端美容学院研习，到2018年在商丘落地第一家"恭喜日式美肌"，再到今天千平方的医学抗衰总店——近十年来，我们不断学习和升级，完成了从生活美容到医疗美容的完整闭环。</p>
+                    <p>我们的理解是：第一，东西要真。所有仪器均为官方正品授权，支持扫码验真。第二，人要专。专业整形外科主治医生坐镇，所有方案量肤定制，绝不套模板。</p>
+                    <div class="founder-timeline">
+                        <div class="timeline-item">
+                            <span class="timeline-date">2025.08 - 至今</span>
+                            <span class="timeline-text">恭喜CAN'SHE医学抗衰机构 | 双美机构主理人</span>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-date">2024.04 - 2025.08</span>
+                            <span class="timeline-text">恭喜CAN'SHE医疗美容 | 医疗机构主理人</span>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-date">2021.09 - 2024.04</span>
+                            <span class="timeline-text">恭喜科美中心 | 主理人</span>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-date">2018.06 - 2021.09</span>
+                            <span class="timeline-text">恭喜日式美肌 | 主理人</span>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-date">2015 - 2018.06</span>
+                            <span class="timeline-text">日本Pola高端美容学院 | 研习生 + 初创人</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="founder-image fade-in"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="timeline-section" id="timeline">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <p class="section-label">Timeline</p>
+                <h2 class="section-title">发展历程</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item-main fade-in">
+                    <div class="timeline-year-wrap">
+                        <div class="timeline-year">2015 - 2017</div>
+                        <div class="timeline-dot"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <h4>国际视野 · 初创研学</h4>
+                        <p>深入Pola学院研习非手术面部年轻化技术，同时引入国际高端护肤项目，奠定恭喜家的"专业+高端"基因，开启品牌初创之路。</p>
+                    </div>
+                </div>
+                <div class="timeline-item-main fade-in">
+                    <div class="timeline-year-wrap">
+                        <div class="timeline-year">2018</div>
+                        <div class="timeline-dot"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <h4>技术储备 · 专业深耕</h4>
+                        <p>恭喜日式美肌美容院成立，秉着"大牌养肤不伤肤"理念，确立高端护理定位，品牌影响力进一步扩大。</p>
+                    </div>
+                </div>
+                <div class="timeline-item-main fade-in">
+                    <div class="timeline-year-wrap">
+                        <div class="timeline-year">2021</div>
+                        <div class="timeline-dot"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <h4>品类扩展 · 科美抗衰</h4>
+                        <p>恭喜科美中心门店正式成立。聚焦"轻医美"领域，主打"无创抗衰+皮肤年轻化"；同时不断完善内核，强化服务体系。</p>
+                    </div>
+                </div>
+                <div class="timeline-item-main fade-in">
+                    <div class="timeline-year-wrap">
+                        <div class="timeline-year">2024</div>
+                        <div class="timeline-dot"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <h4>初探医美 · 匠心为伴</h4>
+                        <p>取得《医疗机构执业许可证》，成立"医疗美容诊所"。新增注射类医美项目，实现"护肤-仪器抗衰-医美注射"全链路服务。</p>
+                    </div>
+                </div>
+                <div class="timeline-item-main fade-in">
+                    <div class="timeline-year-wrap">
+                        <div class="timeline-year">2025</div>
+                        <div class="timeline-dot"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <h4>双美闭环 · 全生命周期服务</h4>
+                        <p>打造千平方双美门店。从"多个单一门店"到"区域规模效应"，从"生活美容"到"医疗美容"，全方面实现双美生态闭环。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Culture Section -->
+    <section class="culture" id="culture">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <p class="section-label">Culture</p>
+                <h2 class="section-title">品牌文化</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="culture-grid">
+                <div class="culture-card fade-in">
+                    <div class="culture-icon">愿</div>
+                    <h3>愿景</h3>
+                    <p>做一个靠谱的人<br>做一个靠谱的品牌<br><span style="color: var(--color-gold); font-size: 0.8rem;">Be a reliable person. Build a reliable brand.</span></p>
+                </div>
+                <div class="culture-card fade-in">
+                    <div class="culture-icon">使</div>
+                    <h3>使命</h3>
+                    <p>正规医疗，品质服务，信任交付<br><span style="color: var(--color-gold); font-size: 0.8rem;">Standard Medical. Quality Service. Your Trust, Our Promise.</span></p>
+                </div>
+                <div class="culture-card fade-in">
+                    <div class="culture-icon">值</div>
+                    <h3>价值观</h3>
+                    <p>真诚服务好每一位顾客<br>以平和之心待人，以互助之爱成事<br><span style="color: var(--color-gold); font-size: 0.8rem;">Treat people with a peaceful heart.</span></p>
+                </div>
+            </div>
+            <div class="culture-values fade-in">
+                <h3>品牌承诺</h3>
+                <div class="values-grid">
+                    <div class="value-item">
+                        <h4>正品保障</h4>
+                        <p>所有仪器支持扫码验真</p>
+                    </div>
+                    <div class="value-item">
+                        <h4>量肤定制</h4>
+                        <p>绝不套用模板方案</p>
+                    </div>
+                    <div class="value-item">
+                        <h4>专业医师</h4>
+                        <p>整形外科主治医生坐镇</p>
+                    </div>
+                    <div class="value-item">
+                        <h4>安全塑美</h4>
+                        <p>微创安全，自然协调</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Strengths Section -->
+    <section class="strengths" id="strengths">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <p class="section-label">Strengths</p>
+                <h2 class="section-title">品牌硬实力</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="strengths-tabs fade-in">
+                <button class="tab-btn active" data-tab="yimei">医美仪器</button>
+                <button class="tab-btn" data-tab="shengmei">生美仪器</button>
+                <button class="tab-btn" data-tab="coop">合作品牌</button>
+            </div>
+            <div class="strengths-content">
+                <div class="strengths-grid" id="yimei">
+                    <div class="strength-item fade-in">
+                        <span class="strength-badge">商丘首家</span>
+                        <h4>美国热玛吉官方正品授权</h4>
+                        <p>Thermage FLX 抗衰紧肤金标准</p>
+                    </div>
+                    <div class="strength-item fade-in">
+                        <span class="strength-badge">官方授权</span>
+                        <h4>超声V拉美官方正品授权</h4>
+                        <p>普门科技超声抗衰技术</p>
+                    </div>
+                    <div class="strength-item fade-in">
+                        <span class="strength-badge">官方授权</span>
+                        <h4>钻石超塑官方正品授权</h4>
+                        <p>以色列InMode塑形紧致</p>
+                    </div>
+                    <div class="strength-item fade-in">
+                        <span class="strength-badge">官方授权</span>
+                        <h4>聚拉美官方正品授权</h4>
+                        <p>先进抗衰技术平台</p>
+                    </div>
+                    <div class="strength-item fade-in">
+                        <span class="strength-badge">豫东首家</span>
+                        <h4>以色列黑金超光子官方授权</h4>
+                        <p>飞顿黑金DPL精准嫩肤</p>
+                    </div>
+                    <div class="strength-item fade-in">
+                        <span class="strength-badge">官方授权</span>
+                        <h4>西弥斯黄金微针官方授权</h4>
+                        <p>射频微针修复紧致</p>
+                    </div>
+                </div>
+                <div class="strengths-grid" id="shengmei" style="display: none;">
+                    <div class="strength-item fade-in">
+                        <span class="strength-badge">商丘首家</span>
+                        <h4>海菲秀官方授权</h4>
+                        <p>美国HydraFacial深层清洁滋养</p>
+                    </div>
+                    <div class="strength-item fade-in">
+                        <span class="strength-badge">商丘首家</span>
+                        <h4>BTL胶原枪官方授权</h4>
+                        <p>英国BTL紧致提升技术</p>
+                    </div>
+                    <div class="strength-item fade-in">
+                        <span class="strength-badge">商丘首家</span>
+                        <h4>LDM水滴提升官方授权</h4>
+                        <p>德国LDM细胞修复技术</p>
+                    </div>
+                    <div class="strength-item fade-in">
+                        <span class="strength-badge">官方授权</span>
+                        <h4>以色列4D女神机授权</h4>
+                        <p>多维度抗衰护理</p>
+                    </div>
+                    <div class="strength-item fade-in">
+                        <span class="strength-badge">官方授权</span>
+                        <h4>舒敏之星授权</h4>
+                        <p>敏感肌修复专家</p>
+                    </div>
+                    <div class="strength-item fade-in">
+                        <span class="strength-badge">商丘唯一</span>
+                        <h4>法儿曼官方授权旗舰店</h4>
+                        <p>瑞士高端抗衰护理</p>
+                    </div>
+                </div>
+                <div class="strengths-grid" id="coop" style="display: none;">
+                    <div class="strength-item fade-in">
+                        <span class="strength-badge">深度合作</span>
+                        <h4>艾尔建 / Allergan</h4>
+                        <p>保妥适、乔雅登等产品合作</p>
+                    </div>
+                    <div class="strength-item fade-in">
+                        <span class="strength-badge">深度合作</span>
+                        <h4>爱美客</h4>
+                        <p>国产医美产品领军品牌</p>
+                    </div>
+                    <div class="strength-item fade-in">
+                        <span class="strength-badge">深度合作</span>
+                        <h4>双美胶原</h4>
+                        <p>胶原蛋白植入剂</p>
+                    </div>
+                    <div class="strength-item fade-in">
+                        <span class="strength-badge">深度合作</span>
+                        <h4>伊妍仕 / Ellansé</h4>
+                        <p>少女针再生抗衰</p>
+                    </div>
+                    <div class="strength-item fade-in">
+                        <span class="strength-badge">深度合作</span>
+                        <h4>菲林普利</h4>
+                        <p>高端填充材料</p>
+                    </div>
+                    <div class="strength-item fade-in">
+                        <span class="strength-badge">深度合作</span>
+                        <h4>丝丽 / Cytocare</h4>
+                        <p>动能素营养抗衰</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Doctor Section -->
+    <section class="doctor" id="doctor">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <p class="section-label">Medical Team</p>
+                <h2 class="section-title">医疗团队</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="doctor-grid">
+                <div class="doctor-image fade-in"></div>
+                <div class="doctor-content fade-in">
+                    <h3>主治医师</h3>
+                    <p class="doctor-role">整形外科主治医师 / 皮肤科执业医师</p>
+                    <p>从事医美临床八余年，专攻面部精细化抗衰与轮廓塑造。拥有皮肤科和整外双证，具备保妥适和乔雅登注射资质，现任郑州市整形美容协会第六届理事会理事。</p>
+                    <p>擅长玻尿酸填充改善面部凹陷，肉毒素精准除皱瘦脸，追求自然协调的面部比例；同时熟练热玛吉、黑金等光电项目。秉持微创安全理念，专注打造贴合个人气质的自然美。</p>
+                    <div class="doctor-certs">
+                        <h4>专业认证</h4>
+                        <div class="cert-tags">
+                            <span class="cert-tag">整形外科主治医师</span>
+                            <span class="cert-tag">中整协医美协会理事</span>
+                            <span class="cert-tag">郑州市整形美容协会理事</span>
+                            <span class="cert-tag">保妥适注射认证</span>
+                            <span class="cert-tag">乔雅登注射认证</span>
+                            <span class="cert-tag">伊妍仕注射认证</span>
+                            <span class="cert-tag">热玛吉官方认证</span>
+                            <span class="cert-tag">菲林普利注射导师</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="logo">CAN'<span>SHE</span> 恭喜</div>
+                <p>医学抗衰，年轻恭喜。CAN'SHE恭喜医学抗衰机构，坐落于商丘，是集医学美容、科技抗衰、美容护理于一体的综合美学空间。科学唤肤，量肤定制，靠谱的人，靠谱的品牌。</p>
+            </div>
+            <div class="footer-links">
+                <h4>快速导航</h4>
+                <ul>
+                    <li><a href="#about">品牌故事</a></li>
+                    <li><a href="#founder">主理人</a></li>
+                    <li><a href="#timeline">发展历程</a></li>
+                    <li><a href="#culture">品牌文化</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>联系我们</h4>
+                <ul>
+                    <li><a href="#">商丘CAN'SHE恭喜医学抗衰机构</a></li>
+                    <li><a href="#">千平方医学抗衰总店</a></li>
+                    <li><a href="#">@商丘恭喜家的胖老板</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p> CAN'SHE恭喜医学抗衰机构 · 所有仪器产品保证正品 · 支持扫码验真</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Fade in animation on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        fadeElements.forEach(el => observer.observe(el));
+
+        // Tab switching for strengths section
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const strengthsGrids = document.querySelectorAll('.strengths-grid');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tabId = btn.dataset.tab;
+
+                tabBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                strengthsGrids.forEach(grid => {
+                    grid.style.display = grid.id === tabId ? 'grid' : 'none';
+                });
+            });
+        });
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
